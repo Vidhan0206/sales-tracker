@@ -16,13 +16,15 @@ export function DashboardNav() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
 
+  const toggleMenu = () => setIsOpen(!isOpen)
+
   return (
     <nav className="bg-white border-b border-gray-200 p-4">
       {/* Hamburger button - visible only on mobile */}
       <div className="flex items-center justify-between sm:hidden">
         <h2 className="text-lg font-semibold">Menu</h2>
         <button
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={toggleMenu}
           aria-label="Toggle menu"
           className="p-2 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-600"
         >
@@ -43,11 +45,7 @@ export function DashboardNav() {
               <Link
                 href={href}
                 className={`flex items-center gap-2 px-3 py-2 rounded-md text-sm font-medium transition-colors
-                  ${
-                    isActive
-                      ? "bg-blue-600 text-white"
-                      : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"
-                  }`}
+                  ${isActive ? "bg-blue-600 text-white" : "text-gray-700 hover:bg-gray-100 hover:text-blue-600"}`}
                 onClick={() => setIsOpen(false)} // close menu on mobile after click
               >
                 <Icon className="h-5 w-5" />
